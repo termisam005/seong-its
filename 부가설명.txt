@@ -1,0 +1,40 @@
+
+성남시 ITS 교통화면 리액트환경 퍼블리싱 입니다.
+
+<확인방법>
+- git clone http://git.uinetworks.kr/design/SeongNamCity-publishing.git
+- npm install
+- npm start
+
+<pages 폴더설명>
+comp - uniplus 컴포넌트 페이지 모음.
+template - uniplus 참고용 템플릿페이지
+seongnam - 성남시its 페이지
+
+<seongnam 폴더 페이지설명>
+Login, LoginPop - 로그인, 로그인팝업
+Main - 상황관리
+MainPop - 상황관리 추가팝업
+Smart - 스마트교차로(교통상황 모티터링)
+SmartAnalysis - 스마트교차로(교차로 분석)
+SmartPop - 스마트교차로 팝업
+Businfo - 버스정보(노선조회)
+BusinfoBit - 버스정보(BIT 상태)
+Parkinteg - 주차통합
+
+-- 푸터메뉴에 범례, 설정 레이어들이 포함되어 있습니다.
+
+
+<style 수정방법>
+styles폴더에 custom.scss(개발자가 추가하는 css파일)을 추가해서 클래스 별로 수정해서 쓰면 됩니다.
+주의할 점은 index.scss에 import 된 다른 scss파일중에 제일 하단에 import 되어야 합니다.
+그래야만 기존에 있던 클래스와 스타일이 충돌됬을때 custom.scss 에 작성한 스타일이 우선 적용됩니다.
+
+
+etc) 모든단위를 px이 아닌 rem으로 했습니다. 2560 x 1440 등 넓은 해상도에 바로 적용시키기 위함입니다.
+ - 1rem 은 16px 입니다. 14px = 0.875rem, 16px = 1rem
+   20px의 rem을 알고싶으면 계산기로 20/16 하면 1.25rem 이 됩니다.
+
+ - 성남시its 화면에서는  css mediaquery 에서 넓이 2400px 이상일때 (해상도 2560 대응) 컨텐츠 1.2배, 
+   3800px 이상일때 (해상도 3840 대응) 컨텐츠 1.7배로 커지게 스타일링 해놨습니다.
+   body,html {font-size: 1.2rem;}, body,html {font-size: 1.7rem;}
