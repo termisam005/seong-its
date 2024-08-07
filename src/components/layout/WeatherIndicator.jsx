@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import ImgComponent from '../common/ImgComponent';
 import ButtonComponent from '../common/ButtonComponent';
 import WeatherSign from '../card/WeatherSign';
@@ -27,6 +27,20 @@ const WeatherIndicator = ({ IndClass, IndTitle }) => {
         setMenuTab(index);
     }
 
+    // btn_line1 탭
+    useEffect(()=>{
+        const buttonLine = document.querySelectorAll('.btn_line1');
+
+        buttonLine.forEach(function(button){
+            button.addEventListener('click', function(){
+                buttonLine.forEach(function(btn) {
+                    btn.classList.remove("selected");
+                });
+                this.classList.add('selected');
+            })
+        })
+    });
+
     return (
         <article className={IndClass}>
             <div class="indi_top" onClick={clickInd}>
@@ -39,10 +53,12 @@ const WeatherIndicator = ({ IndClass, IndTitle }) => {
 
                 <div className='dflx_ac_jbet m-b-8'>
                     <div className="tab_line">
-                        <ButtonComponent className={menuTab === 1? "btn_line1 btn_xs selected" : "btn_line1 btn_xs"} onClick={() => tabMenu(1)} 
+                        <button className='btn_line1 btn_xs selected'>오늘</button>
+                        <button className='btn_line1 btn_xs'>내일</button>
+                        {/* <ButtonComponent className={menuTab === 1? "btn_line1 btn_xs selected" : "btn_line1 btn_xs"} onClick={() => tabMenu(1)} 
                         txt={'오늘'} />
                         <ButtonComponent className={menuTab === 2? "btn_line1 btn_xs selected" : "btn_line1 btn_xs"} onClick={() => tabMenu(2)}
-                        txt={'내일'} />
+                        txt={'내일'} /> */}
                     </div>
                     <section className='swiper_wrap_mini'>
                         <Swiper className="swiper_mini" navigation={true} modules={[Navigation]} slidesPerView={1} >
